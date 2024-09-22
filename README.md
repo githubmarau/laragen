@@ -5,6 +5,7 @@
 ![Licence](https://img.shields.io/badge/Licence-MIT-green.svg?style=flat-square)
 ![StyleCI](https://img.shields.io/badge/StyleCI-pass-green.svg?style=flat-square)
 
+This is a fork from ibex/crud-generator
 
 This Laravel CRUD Generator v2.x package provides and generates Controller, Model (with eloquent relations), and Views in **Bootstrap**/**Tailwind CSS** for the development of your applications with a single command. This new `v2.x` will have stack options like `bootstrap`, `tailwind`, `livewire`(Livewire views will be generated in **Tailwind** CSS), and `API` only.
 
