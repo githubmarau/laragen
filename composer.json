@@ -1,0 +1,30 @@
+{
+    "name": "githubmarau/laragen",
+    "description": "Laravel CRUD Generator",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "A Marau",
+            "email": "alexandermarau@gmail.com"
+        }
+    ],
+    "keywords": ["laravel", "crud", "crud generator", "laravel crud generator", "laravel package", "bootstrap css", "tailwind css", "alpine js"],
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^10.30|^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "GithubMarau\\LaraGen\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "GithubMarau\\LaraGen\\CrudServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
