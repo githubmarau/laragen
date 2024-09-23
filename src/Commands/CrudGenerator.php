@@ -1,6 +1,6 @@
 <?php
 
-namespace Ibex\CrudGenerator\Commands;
+namespace GithubMarau\Laragen\Commands;
 
 use Exception;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;

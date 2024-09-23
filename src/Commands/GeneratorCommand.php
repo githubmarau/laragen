@@ -1,9 +1,9 @@
 <?php
 
-namespace Ibex\CrudGenerator\Commands;
+namespace GithubMarau\Laragen\Commands;
 
 use Exception;
-use Ibex\CrudGenerator\ModelGenerator;
+use GithubMarau\Laragen\ModelGenerator;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Console\PromptsForMissingInput;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;

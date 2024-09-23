@@ -1,8 +1,8 @@
 <?php
 
-namespace Ibex\CrudGenerator;
+namespace GithubMarau\Laragen;
 
-use Ibex\CrudGenerator\Commands\CrudGenerator;
+use GithubMarau\Laragen\Commands\CrudGenerator;
 use Illuminate\Support\ServiceProvider;
 
 /**

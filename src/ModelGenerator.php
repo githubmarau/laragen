@@ -1,6 +1,6 @@
 <?php
 
-namespace Ibex\CrudGenerator;
+namespace GithubMarau\Laragen;
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
