@@ -12,7 +12,7 @@
     </div>
 
     <div class="overflow-hidden border rounded-lg bg-white">
-        <form class="w-full mb-0" method="POST" wire:submit.prevent="save" role="form" enctype="multipart/form-data">
+        <form class="w-full mb-0" wire:submit.prevent="save">
             <div class="p-6 space-y-3">
                 @csrf
                 @include('livewire.{{modelView}}.form')
