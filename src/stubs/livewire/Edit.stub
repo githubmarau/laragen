@@ -26,6 +26,11 @@ class Edit extends Component
     #[Layout('{{layout}}')]
     public function render()
     {
+        // $membros = \App\Models\Membro::select(['id', 'nome'])
+        //     ->orderBy('nome')
+        //     ->pluck('nome', 'id')
+        //     ->prepend('Selecione', '');
+
         return view('livewire.{{modelView}}.edit');
     }
 }

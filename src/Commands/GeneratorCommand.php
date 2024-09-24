@@ -338,17 +338,19 @@ abstract class GeneratorCommand extends Command implements PromptsForMissingInpu
     {
         $replace = array_merge($this->buildReplacements(), [
             '{{title}}' => $title,
+            '{{column}}' => $column,
         ]);
 
-        $attr = match ($this->options['stack']) {
-            'tailwind', 'livewire' => 'scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500"',
+        $cell = match ($this->options['stack']) {
+            'tailwind' => '<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">{{title}}</th>',
+            'livewire' => '<x-ui.table.header for-crud wire:click="sortBy(\'{{column}}\')">{{title}}</x-ui.table.header>',
             default => ''
         };
 
         return str_replace(
             array_keys($replace),
             array_values($replace),
-            $this->_getSpace(9).'<th '.$attr.'>{{title}}</th>'."\n"
+            $this->_getSpace(9).$cell."\n"
         );
     }
 
@@ -363,15 +365,16 @@ abstract class GeneratorCommand extends Command implements PromptsForMissingInpu
             '{{column}}' => $column,
         ]);
 
-        $attr = match ($this->options['stack']) {
-            'tailwind', 'livewire' => 'class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"',
+        $cell = match ($this->options['stack']) {
+            'tailwind' => '<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ ${{modelNameLowerCase}}->{{column}} }}</td>',
+            'livewire' => '<x-ui.table.column for-crud>{{ ${{modelNameLowerCase}}->{{column}} }}</x-ui.table.column>',
             default => ''
         };
 
         return str_replace(
             array_keys($replace),
             array_values($replace),
-            $this->_getSpace(10).'<td '.$attr.'>{{ ${{modelNameLowerCase}}->{{column}} }}</td>'."\n"
+            $this->_getSpace(10).$attr."\n"
         );
     }
 

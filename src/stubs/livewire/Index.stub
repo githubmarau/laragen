@@ -41,15 +41,26 @@ class Index extends Component
 
     public function getRowsQueryProperty()
     {
-        return \{{modelNamespace}}\{{modelName}}::query()
-            ->orderBy($this->sortField, $this->sortDirection)
+        $query = \{{modelNamespace}}\{{modelName}}::query();
+        
+        $query->orderBy($this->sortField, $this->sortDirection)
             ->where('nome', 'like', "%{$this->search}%");
+
+        // if ($this->sortField == 'membro'){
+        //     $query->whereHas('membro', function ($query) {
+        //         $query->where('nome', 'like', "%{$this->search}%")
+        //             ->orderBy('nome', $this->sortDirection);
+        //     });
+        // }
+    
+
+        return $query;
     }
 
     #[Layout('{{layout}}')]
     public function render(): View
     {
-        return view('livewire.{{modelView}}.index', compact('{{modelNamePluralLowerCase}}'));
+        return view('livewire.{{modelView}}.index', ['{{modelNamePluralLowerCase}}' => $this->rows]));
     }
 
     public function delete({{modelName}} ${{modelNameLowerCase}})
