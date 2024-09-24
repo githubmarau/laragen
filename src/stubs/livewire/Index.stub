@@ -17,6 +17,9 @@ class Index extends Component
 
     public $queryString = ['search', 'sortField', 'sortDirection'];
 
+    public $confirmingDeletion = false;
+    public $deleting{{modelName}};
+
     public function updatingSearch()
     {
         $this->resetPage();
@@ -57,16 +60,31 @@ class Index extends Component
         return $query;
     }
 
+        public function confirmDeletion(string $<$ model.table.getPrimaryKeyName() $>)
+    {
+        $this-><$ deletingItemVarName $> = $<$ model.table.getPrimaryKeyName() $>;
+
+        $this->confirmingDeletion = true;
+    }
+
+    public function delete({{modelName}} ${{modelNameLowerCase}})
+    {
+        $${{modelNameLowerCase}}->delete();
+
+        $this->confirmingDeletion = false;
+    }
+
+
     #[Layout('{{layout}}')]
     public function render(): View
     {
         return view('livewire.{{modelView}}.index', ['{{modelNamePluralLowerCase}}' => $this->rows]);
     }
 
-    public function delete({{modelName}} ${{modelNameLowerCase}})
-    {
-        ${{modelNameLowerCase}}->delete();
-
-        return $this->redirectRoute('{{modelRoute}}.index', navigate: true);
-    }
+    //public function delete({{modelName}} ${{modelNameLowerCase}})
+    //{
+    //    ${{modelNameLowerCase}}->delete();
+    //
+    //    return $this->redirectRoute('{{modelRoute}}.index', navigate: true);
+    //}
 }

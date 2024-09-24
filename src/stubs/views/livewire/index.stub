@@ -30,7 +30,7 @@
                 {{ __('Cancel') }}
             </x-ui.button>
     
-            <x-ui.button.danger class="ml-3" wire:click="delete({{ deleting${{modelName}} }})" wire:loading.attr="disabled">
+            <x-ui.button.danger class="ml-3" wire:click="delete({{ deleting{{modelName}} }})" wire:loading.attr="disabled">
                 {{ __('Delete') }}
             </x-ui.button.danger>
         </x-slot>
