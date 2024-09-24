@@ -10,7 +10,7 @@
 
         @can('create', {{modelName}}::class)
         <a wire:navigate href="{{ route('{{modelRoute}}.create') }}">
-            <x-ui.button>New</x-ui.button>
+            <x-ui.button>__('New')</x-ui.button>
         </a>
         @endcan
     </div>

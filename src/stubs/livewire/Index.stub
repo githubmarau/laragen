@@ -60,16 +60,16 @@ class Index extends Component
         return $query;
     }
 
-        public function confirmDeletion(string $<$ model.table.getPrimaryKeyName() $>)
+        public function confirmDeletion(string $id)
     {
-        $this-><$ deletingItemVarName $> = $<$ model.table.getPrimaryKeyName() $>;
+        $this->$deleting{{modelName}} = $id;
 
         $this->confirmingDeletion = true;
     }
 
     public function delete({{modelName}} ${{modelNameLowerCase}})
     {
-        $${{modelNameLowerCase}}->delete();
+        ${{modelNameLowerCase}}->delete();
 
         $this->confirmingDeletion = false;
     }
