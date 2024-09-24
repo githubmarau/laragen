@@ -3,7 +3,7 @@
     <x-ui.breadcrumbs>
         <x-ui.breadcrumbs.link href="/dashboard">{{ __('Dashboard') }}</x-ui.breadcrumbs.link>
         <x-ui.breadcrumbs.separator/>
-        <x-ui.breadcrumbs.link href="{{ route('{{modelRoute}}.index') }}">{{modelTitle}}</x-ui.breadcrumbs.link>
+        <x-ui.breadcrumbs.link href="{{ route('{{modelRoute}}.index') }}">{{modelTitlePlural}}</x-ui.breadcrumbs.link>
         <x-ui.breadcrumbs.separator/>
         <x-ui.breadcrumbs.link active>{{ __('Create') }} {{modelTitle}}</x-ui.breadcrumbs.link>
     </x-ui.breadcrumbs>
