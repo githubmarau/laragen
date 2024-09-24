@@ -334,7 +334,7 @@ abstract class GeneratorCommand extends Command implements PromptsForMissingInpu
      *
      * @return string
      */
-    protected function getHead($title): string
+    protected function getHead($title, $column): string
     {
         $replace = array_merge($this->buildReplacements(), [
             '{{title}}' => $title,
@@ -374,7 +374,7 @@ abstract class GeneratorCommand extends Command implements PromptsForMissingInpu
         return str_replace(
             array_keys($replace),
             array_values($replace),
-            $this->_getSpace(10).$attr."\n"
+            $this->_getSpace(10).$cell."\n"
         );
     }
 

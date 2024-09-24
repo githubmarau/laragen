@@ -60,7 +60,7 @@ class Index extends Component
     #[Layout('{{layout}}')]
     public function render(): View
     {
-        return view('livewire.{{modelView}}.index', ['{{modelNamePluralLowerCase}}' => $this->rows]));
+        return view('livewire.{{modelView}}.index', ['{{modelNamePluralLowerCase}}' => $this->rows]);
     }
 
     public function delete({{modelName}} ${{modelNameLowerCase}})
