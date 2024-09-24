@@ -1,7 +1,14 @@
-    <div>
-        <x-input-label for="{{column_snake}}" :value="__('{{title}}')"/>
-        <x-text-input wire:model="form.{{column}}" id="{{column_snake}}" name="{{column}}" type="text" class="mt-1 block w-full" autocomplete="{{column}}" placeholder="{{title}}"/>
-        @error('form.{{column}}')
-            <x-input-error class="mt-2" :messages="$message"/>
-        @enderror
-    </div>
+{{-- {{column}} --}}
+<div class="w-full">
+    <x-ui.label for="{{column_snake}}" :value="__('{{title}}')"/>
+    <x-ui.input.text
+        class="w-full"
+        wire:model="form.{{column}}"
+        name="{{column}}"
+        id="{{column_snake}}"
+        autocomplete="{{column}}" 
+        placeholder="{{title}}"
+    />
+    <x-ui.input.error for="form.{{column}}" />
+</div>
+{{-- /{{column}} --}}

@@ -67,7 +67,7 @@ class Index extends Component
         $this->confirmingDeletion = true;
     }
 
-    public function delete({{modelName}} ${{modelNameLowerCase}})
+    public function delete(\{{modelNamespace}}\{{modelName}} ${{modelNameLowerCase}})
     {
         ${{modelNameLowerCase}}->delete();
 

@@ -1,6 +1,13 @@
 <div class="space-y-6">
     {{form}}
-    <div class="flex items-center gap-4">
-        <x-primary-button>Submit</x-primary-button>
+
+    <div class="flex justify-between mt-4 border-t border-gray-50 p-4">
+        <div>
+            <!-- Other buttons here -->
+        </div>
+        <div>
+            <x-ui.button type="submit">{{ __('Save') }}</x-ui.button>
+        </div>
     </div>
+    
 </div>
