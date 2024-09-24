@@ -62,7 +62,7 @@ class Index extends Component
 
         public function confirmDeletion(string $id)
     {
-        $this->$deleting{{modelName}} = $id;
+        $this->deleting{{modelName}} = $id;
 
         $this->confirmingDeletion = true;
     }

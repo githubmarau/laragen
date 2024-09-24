@@ -8,11 +8,13 @@
     <div class="flex justify-between align-top py-4">
         <x-ui.input wire:model.live="search" type="text" placeholder="Pesquisar por {{ __($sortField) }}..." />
 
-        @can('create', {{modelName}}::class)
+{{--  --}}
+
+        {{-- @can('create', {{modelName}}::class) --}}
         <a wire:navigate href="{{ route('{{modelRoute}}.create') }}">
             <x-ui.button>__('New')</x-ui.button>
         </a>
-        @endcan
+        {{-- @endcan --}}
     </div>
 
     {{-- Delete Modal --}}
@@ -30,7 +32,7 @@
                 {{ __('Cancel') }}
             </x-ui.button>
     
-            <x-ui.button.danger class="ml-3" wire:click="delete({{ deleting{{modelName}} }})" wire:loading.attr="disabled">
+            <x-ui.button.danger class="ml-3" wire:click="delete({{ $deleting{{modelName}} }})" wire:loading.attr="disabled">
                 {{ __('Delete') }}
             </x-ui.button.danger>
         </x-slot>
@@ -51,12 +53,12 @@
 
                     {{tableBody}}
                     <x-ui.table.action-column>
-                        @can('update', ${{modelNameLowerCase}})
+                        {{-- @can('update', ${{modelNameLowerCase}}) --}}
                         <x-ui.action wire:navigate href="{{ route('{{modelRoute}}.edit', ${{modelNameLowerCase}}->id) }}">Edit</x-ui.action>
-                        @endcan
-                        @can('delete', ${{modelNameLowerCase}})
+                        {{-- @endcan
+                        @can('delete', ${{modelNameLowerCase}}) --}}
                         <x-ui.action.danger wire:click="confirmDeletion({{ ${{modelNameLowerCase}}->id }})">Delete</x-ui.action.danger>
-                        @endcan
+                        {{-- @endcan --}}
                     </x-ui.table.action-column>
                                 </x-ui.table.row>
                 @empty
