@@ -525,7 +525,7 @@ abstract class GeneratorCommand extends Command implements PromptsForMissingInpu
             });
 
             // CSV format
-            return implode(', \n', $filterColumns);
+            return implode(', '."\n", $filterColumns);
         };
 
         $properties .= "\n *";

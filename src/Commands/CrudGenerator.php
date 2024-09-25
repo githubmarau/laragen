@@ -221,7 +221,7 @@ class CrudGenerator extends GeneratorCommand
         $replace = array_merge($this->buildReplacements(), $this->modelReplacements());
 
         $modelTemplate = str_replace(
-            array_keys($replace), array_values($replace), $this->name == 'users' ? $this->getStub('UserModel') : $this->getStub('Model')
+            array_keys($replace), array_values($replace), $this->name == 'User' ? $this->getStub('UserModel') : $this->getStub('Model')
         );
 
         $this->write($modelPath, $modelTemplate);
