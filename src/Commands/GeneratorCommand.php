@@ -442,6 +442,24 @@ abstract class GeneratorCommand extends Command implements PromptsForMissingInpu
     }
 
     /**
+     * @return array
+     */
+    protected function getGuardedColumns(): array
+    {
+        $unwanted = $this->unwantedColumns;
+        $columns = [];
+
+        foreach ($this->getColumns() as $column) {
+            $columns[] = $column['name'];
+        }
+
+        return array_filter($columns, function ($value) use ($unwanted) {
+            return in_array($value, $unwanted);
+        });
+    }
+
+
+    /**
      * Make model attributes/replacements.
      *
      * @return array
@@ -507,7 +525,7 @@ abstract class GeneratorCommand extends Command implements PromptsForMissingInpu
             });
 
             // CSV format
-            return implode(', ', $filterColumns);
+            return implode(', \n', $filterColumns);
         };
 
         $properties .= "\n *";
