@@ -37,9 +37,9 @@ class CrudServiceProvider extends ServiceProvider
             __DIR__.'/../src/resources/views/components' => resource_path('views/components/'),
         ], 'livewire-crud');
 
-        $this->publishes([
-            __DIR__.'/../src/app/Models' => app_path('models/'),
-        ], 'stubs-crud');
+        // $this->publishes([
+        //     __DIR__.'/../src/app/Models' => app_path('models/'),
+        // ], 'model-crud');
     }
 
     /**
