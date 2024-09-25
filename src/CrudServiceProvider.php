@@ -21,7 +21,7 @@ class CrudServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 CrudGenerator::class,
-                PublishCrudCommand::class,
+                //PublishCrudCommand::class,
             ]);
         }
 
@@ -31,6 +31,14 @@ class CrudServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/../src/stubs' => resource_path('stubs/crud/'),
+        ], 'stubs-crud');
+
+        $this->publishes([
+            __DIR__.'/../src/resources/views/components' => resource_path('views/components/'),
+        ], 'livewire-crud');
+
+        $this->publishes([
+            __DIR__.'/../src/app/Models' => app_path('models/'),
         ], 'stubs-crud');
     }
 
