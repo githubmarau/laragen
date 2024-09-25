@@ -47,3 +47,4 @@ class PublishCrudCommand extends Command
 
         $this->info('Stubs published successfully.');
     }
+}

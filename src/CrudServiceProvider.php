@@ -2,8 +2,9 @@
 
 namespace GithubMarau\Laragen;
 
-use GithubMarau\Laragen\Commands\CrudGenerator;
 use Illuminate\Support\ServiceProvider;
+use GithubMarau\Laragen\Commands\CrudGenerator;
+use GithubMarau\Laragen\Commands\PublishCrudCommand;
 
 /**
  * Class CrudServiceProvider.
@@ -20,6 +21,7 @@ class CrudServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 CrudGenerator::class,
+                PublishCrudCommand::class,
             ]);
         }
 
