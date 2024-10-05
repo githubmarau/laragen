@@ -297,6 +297,7 @@ abstract class GeneratorCommand extends Command implements PromptsForMissingInpu
             '{{modelNameLowerCase}}' => Str::camel($this->name),
             '{{modelRoute}}' => $this->_getRoute(),
             '{{modelView}}' => Str::kebab($this->name),
+            '{{columnCount}}' => count($this->getFilteredColumns()),
         ];
     }
 
@@ -343,7 +344,7 @@ abstract class GeneratorCommand extends Command implements PromptsForMissingInpu
 
         $cell = match ($this->options['stack']) {
             'tailwind' => '<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">{{title}}</th>',
-            'livewire' => '<x-ui.table.header for-crud wire:click="sortBy(\'{{column}}\')">{{title}}</x-ui.table.header>',
+            'livewire' => '<x-ui.table.header for-crud wire:click="sortBy(\'{{column}}\')">__({{title}})</x-ui.table.header>',
             default => ''
         };
 
@@ -525,7 +526,7 @@ abstract class GeneratorCommand extends Command implements PromptsForMissingInpu
             });
 
             // CSV format
-            return "\n\t\t".implode(', '."\n\t\t", $filterColumns)."\n\t";
+            return "\n\t\t".implode(', '."\n\t\t\t", $filterColumns)."\n\t\t";
         };
 
         $properties .= "\n *";

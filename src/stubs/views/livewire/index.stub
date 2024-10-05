@@ -63,7 +63,7 @@
                                 </x-ui.table.row>
                 @empty
                 <x-ui.table.row>
-                    <x-ui.table.column colspan="3">No {{modelName}} found.</x-ui.table.column>
+                    <x-ui.table.column colspan="{{columnCount}}">No {{modelName}} found.</x-ui.table.column>
                 </x-ui.table.row>
                 @endforelse
 

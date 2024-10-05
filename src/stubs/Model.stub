@@ -2,6 +2,7 @@
 
 namespace {{modelNamespace}};
 
+use App\Traits\ChurchScopeTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 {{softDeletesNamespace}}
@@ -14,6 +15,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class {{modelName}} extends Model
 {
     use HasFactory;
+    use ChurchScopeTrait;
     {{softDeletes}}
     protected $perPage = 15;
 
