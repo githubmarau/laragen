@@ -344,7 +344,7 @@ abstract class GeneratorCommand extends Command implements PromptsForMissingInpu
 
         $cell = match ($this->options['stack']) {
             'tailwind' => '<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">{{title}}</th>',
-            'livewire' => '<x-ui.table.header for-crud wire:click="sortBy(\'{{column}}\')">{{ __({{\'title\'}}) }}</x-ui.table.header>',
+            'livewire' => '<x-ui.table.header for-crud wire:click="sortBy(\'{{column}}\')">{{ __(\'{{title}}\') }}</x-ui.table.header>',
             default => ''
         };
 
