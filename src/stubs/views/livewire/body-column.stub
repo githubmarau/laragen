@@ -1,0 +1,1 @@
+<x-ui.table.column for-crud>{{ ${{modelNameLowerCase}}->{{column}} }}</x-ui.table.column>

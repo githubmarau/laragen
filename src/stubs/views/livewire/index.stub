@@ -42,7 +42,9 @@
     <x-ui.container.table>
         <x-ui.table>
             <x-slot name="head">
+
                 {{tableHeader}}
+                
                 <x-ui.table.action-header></x-ui.table.action-header>
             </x-slot>
 
@@ -52,6 +54,7 @@
                     <x-ui.table.row class="even:bg-gray-50" wire:key="{{ ${{modelNameLowerCase}}->id }}" wire:loading.class.delay="opacity-75">
 
                     {{tableBody}}
+
                     <x-ui.table.action-column>
                         {{-- @can('update', ${{modelNameLowerCase}}) --}}
                         <x-ui.action wire:navigate href="{{ route('{{modelRoute}}.edit', ${{modelNameLowerCase}}->id) }}">Edit</x-ui.action>

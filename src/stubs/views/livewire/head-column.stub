@@ -1,0 +1,1 @@
+<x-ui.table.header for-crud wire:click="sortBy(\'{{column}}\')">{{ __(\'{{title}}\') }}</x-ui.table.header>

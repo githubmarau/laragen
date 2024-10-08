@@ -194,6 +194,7 @@ class CrudGenerator extends GeneratorCommand
 
         // Form
         $formPath = $this->_getLivewirePath('Forms/'.$this->name.'Form');
+        // $formPath = $this->_getLivewirePath($folder.'/'.$this->name.'Form');
 
         $componentTemplate = str_replace(
             array_keys($replace), array_values($replace), $this->getStub('livewire/Form')
@@ -260,7 +261,7 @@ class CrudGenerator extends GeneratorCommand
         $form = "\n";
 
         foreach ($this->getFilteredColumns() as $column) {
-            $title = Str::title(str_replace('_', ' ', $column));
+            $title = Str::title(str_replace('_', ' ', $column['name']));
 
             $tableHead .= $this->getHead($title, $column);
             $tableBody .= $this->getBody($column);

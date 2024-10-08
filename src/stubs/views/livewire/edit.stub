@@ -3,13 +3,13 @@
     <x-ui.breadcrumbs>
         <x-ui.breadcrumbs.link href="/dashboard">{{ __('Dashboard') }}</x-ui.breadcrumbs.link>
         <x-ui.breadcrumbs.separator/>
-        <x-ui.breadcrumbs.link href="{{ route('{{modelRoute}}.index') }}">{{modelTitlePlural}}</x-ui.breadcrumbs.link>
+        <x-ui.breadcrumbs.link href="{{ route('{{modelRoute}}.index') }}">{{ __('{{modelTitlePlural}}') }}</x-ui.breadcrumbs.link>
         <x-ui.breadcrumbs.separator/>
-        <x-ui.breadcrumbs.link active>{{ __('Update') }} {{modelTitle}}</x-ui.breadcrumbs.link>
+        <x-ui.breadcrumbs.link active>{{ __('Update') }} {{ __('{{modelTitle}}') }}</x-ui.breadcrumbs.link>
     </x-ui.breadcrumbs>
 
     <div class="w-full text-gray-500 text-lg font-semibold py-4 uppercase">
-        <h1>{{ __('Updating') }} {{modelTitle}}</h1>
+        <h1>{{ __('Updating') }} {{ __('{{modelTitle}}') }}</h1>
     </div>
 
     <div class="overflow-hidden border rounded-lg bg-white">
@@ -17,7 +17,9 @@
             <div class="p-6 space-y-3">
                 {{ method_field('PATCH') }}
                 @csrf
+
                 @include('livewire.{{modelView}}.form')
+                
             </div>
         </form>
     </div>

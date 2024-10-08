@@ -321,8 +321,8 @@ abstract class GeneratorCommand extends Command implements PromptsForMissingInpu
     {
         $replace = array_merge($this->buildReplacements(), [
             '{{title}}' => $title,
-            '{{column}}' => $column,
-            '{{column_snake}}' => Str::snake($column),
+            '{{column}}' => $column['name'],
+            '{{column_snake}}' => Str::snake($column['name']),	
         ]);
 
         return str_replace(
@@ -339,12 +339,13 @@ abstract class GeneratorCommand extends Command implements PromptsForMissingInpu
     {
         $replace = array_merge($this->buildReplacements(), [
             '{{title}}' => $title,
-            '{{column}}' => $column,
+            '{{column}}' => $column['name'],
         ]);
 
         $cell = match ($this->options['stack']) {
-            'tailwind' => '<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">{{title}}</th>',
-            'livewire' => '<x-ui.table.header for-crud wire:click="sortBy(\'{{column}}\')">{{ __(\'{{title}}\') }}</x-ui.table.header>',
+            'tailwind' => '<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">{{ __(\'{{title}}\') }}</th>',
+            'livewire' => $this->getStub("views/{$this->options['stack']}/head-column"),
+            // 'livewire' => '<x-ui.table.header for-crud wire:click="sortBy(\'{{column}}\')">{{ __(\'{{title}}\') }}</x-ui.table.header>',
             default => ''
         };
 
@@ -363,12 +364,13 @@ abstract class GeneratorCommand extends Command implements PromptsForMissingInpu
     protected function getBody($column): string
     {
         $replace = array_merge($this->buildReplacements(), [
-            '{{column}}' => $column,
+            '{{column}}' => $column['name'],
         ]);
 
         $cell = match ($this->options['stack']) {
             'tailwind' => '<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ ${{modelNameLowerCase}}->{{column}} }}</td>',
-            'livewire' => '<x-ui.table.column for-crud>{{ ${{modelNameLowerCase}}->{{column}} }}</x-ui.table.column>',
+            'livewire' => $this->getStub("views/{$this->options['stack']}/body-column"),
+            // 'livewire' => '<x-ui.table.column for-crud>{{ ${{modelNameLowerCase}}->{{column}} }}</x-ui.table.column>',
             default => ''
         };
 
@@ -434,11 +436,12 @@ abstract class GeneratorCommand extends Command implements PromptsForMissingInpu
         $columns = [];
 
         foreach ($this->getColumns() as $column) {
-            $columns[] = $column['name'];
+            $columns[] = $column;
+            // $columns[] = $column['name'];
         }
 
         return array_filter($columns, function ($value) use ($unwanted) {
-            return ! in_array($value, $unwanted);
+            return ! in_array($value['name'], $unwanted);
         });
     }
 
