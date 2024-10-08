@@ -12,7 +12,7 @@ class Index extends Component
     use WithPagination;
 
     public $search;
-    public $sortField = 'name';
+    public $sortField = '{{columnSort}}';
     public $sortDirection = 'asc';
 
     public $queryString = ['search', 'sortField', 'sortDirection'];
@@ -47,12 +47,12 @@ class Index extends Component
         $query = \{{modelNamespace}}\{{modelName}}::query();
         
         $query->orderBy($this->sortField, $this->sortDirection)
-            ->where('name', 'like', "%{$this->search}%");
+            ->where('{{columnSort}}', 'like', "%{$this->search}%");
 
         // if ($this->sortField == 'membro'){
         //     $query->whereHas('membro', function ($query) {
-        //         $query->where('name', 'like', "%{$this->search}%")
-        //             ->orderBy('name', $this->sortDirection);
+        //         $query->where({{columnSort}}, 'like', "%{$this->search}%")
+        //             ->orderBy({{columnSort}}, $this->sortDirection);
         //     });
         // }
     

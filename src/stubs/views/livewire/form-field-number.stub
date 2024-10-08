@@ -1,0 +1,7 @@
+    {{-- {{column}} --}}
+    <div class="w-full">
+        <x-ui.label for="{{column_snake}}" :value="__('{{title}}')"/>
+        <x-ui.input.number class="w-full" wire:model="form.{{column}}" name="{{column}}" id="{{column_snake}}" placeholder="{{title}}" />
+        <x-ui.input.error for="form.{{column}}" />
+    </div>
+    {{-- /{{column}} --}}

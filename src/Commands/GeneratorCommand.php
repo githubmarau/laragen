@@ -66,6 +66,8 @@ abstract class GeneratorCommand extends Command implements PromptsForMissingInpu
 
     protected array $options = [];
 
+    protected string $firstColumn = 'name';
+
     /**
      * Create a new controller creator command instance.
      *
@@ -325,6 +327,30 @@ abstract class GeneratorCommand extends Command implements PromptsForMissingInpu
             '{{column_snake}}' => Str::snake($column['name']),	
         ]);
 
+        if ($column['type_name'] == 'text') {
+            $type = 'form-field-text';
+        }
+
+        if ($column['type_name'] == 'date') {
+            $type = 'form-field-date';
+        }
+
+        if ($column['type_name'] == 'timestamp') {
+            $type = 'form-field-date-time';
+        }
+
+        if ($column['type_name'] == 'tinyint') {
+            $type = 'form-field-tinyint';
+        }
+
+        if ($column['type_name'] == 'double' 
+            || $column['type_name'] == 'float' 
+            || $column['type_name'] == 'decimal' 
+            || $column['type_name'] == 'numeric'
+            || $column['type_name'] == 'bigint') {
+            $type = 'form-field-number';
+        }
+
         return str_replace(
             array_keys($replace), array_values($replace), $this->getStub("views/{$this->options['stack']}/$type")
         );
@@ -525,7 +551,7 @@ abstract class GeneratorCommand extends Command implements PromptsForMissingInpu
 
             // Add quotes to the unwanted columns for fillable
             array_walk($filterColumns, function (&$value) {
-                $value = "'".$value."'";
+                $value = "'".$value['name']."'";
             });
 
             // CSV format

@@ -179,8 +179,11 @@ class CrudGenerator extends GeneratorCommand
     {
         $this->info('Creating Livewire Component ...');
 
+        $fields = $this->getFilteredColumns();
+
         $folder = ucfirst(Str::plural($this->name));
-        $replace = array_merge($this->buildReplacements(), $this->modelReplacements());
+        $replace = array_merge($this->buildReplacements(), $this->modelReplacements(), 
+            ['{{columnSort}}' => reset($fields)['name']]);
 
         foreach (['Index', 'Show', 'Edit', 'Create'] as $component) {
             $componentPath = $this->_getLivewirePath($folder.'/'.$component);
